@@ -33,6 +33,7 @@ INSERT INTO Libros (Titulo, Genero, AñoPublicacion, ISBN, AutorID)
 VALUES ('Cien años de soledad', 'Realismo Mágico', 1967, '978-0307474728', 1),
        ('La casa de los espíritus', 'Novela', 1982, '978-0060883287', 2),
        ('La ciudad y los perros', 'Ficción', 1963, '978-8420412179', 3);
+GO
 
 -- Hasta aqui llega el script de la T1, aquí en adelante es parte del team 
 
