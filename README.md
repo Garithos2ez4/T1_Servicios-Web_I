@@ -11,32 +11,29 @@ Proyecto de Servicios Web I desarrollado con ASP.NET Core y .NET 10. La aplicaci
 
 ## Configuración
 
-Cada integrante debe utilizar su propia conexión local. El nombre del servidor puede ser diferente en cada ordenador, por ejemplo:
+Cada integrante conecta la aplicación a su propia instancia local de SQL Server. `ConnectionStrings:DefaultConnection` es el nombre fijo de la configuración; no es una contraseña. El valor de `TU_SERVIDOR` debe reemplazarse por el nombre que aparece en el campo **Nombre del servidor** de SSMS.
 
-- `localhost`
-- `.\SQLEXPRESS`
-- `(localdb)\MSSQLLocalDB`
-- `NOMBRE_DEL_EQUIPO\SQLEXPRESS`
+Por ejemplo, si tu instancia local es SQL Server Express y en SSMS aparece como `TU_EQUIPO\SQLEXPRESS`, puedes usar `.` para referirte a tu propio equipo:
 
-Desde la carpeta raíz del repositorio, configura la conexión con User Secrets:
+Desde la carpeta raíz del repositorio, configura User Secrets con autenticación de Windows:
 
 ```powershell
-dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=TU_SERVIDOR;Database=LibreriaBD;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True" --project .\DSWI_T1_03\DSWI_T1_03.csproj
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=.\SQLEXPRESS;Database=LibreriaBD;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True" --project .\DSWI_T1_03\DSWI_T1_03.csproj
 ```
 
-Si utilizas autenticación SQL Server, puedes usar esta variante:
+Si tu instancia tiene otro nombre, sustituye `.` y `SQLEXPRESS` por el servidor y la instancia que usas en SSMS. Si te conectas con usuario y contraseña de SQL Server en lugar de autenticación de Windows, utiliza tus propios datos en esta variante:
 
 ```powershell
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=TU_SERVIDOR;Database=LibreriaBD;User ID=sa;Password=TU_CONTRASEÑA;MultipleActiveResultSets=True;TrustServerCertificate=True" --project .\DSWI_T1_03\DSWI_T1_03.csproj
 ```
 
-Para comprobar la configuración:
+Para comprobar que guardaste la configuración:
 
 ```powershell
 dotnet user-secrets list --project .\DSWI_T1_03\DSWI_T1_03.csproj
 ```
 
-Cada integrante configura su conexión con User Secrets. No subas `appsettings.Development.json` si contiene el servidor de tu equipo o credenciales. En entorno `Development`, User Secrets tiene prioridad sobre los archivos `appsettings`.
+User Secrets guarda la conexión solo en tu equipo y no se sube a Git. El proyecto ya está preparado para usarlos, así que no hace falta ejecutar `dotnet user-secrets init`. No compartas la salida de `dotnet user-secrets list`, porque puede mostrar tu contraseña. En entorno `Development`, User Secrets tiene prioridad sobre los archivos `appsettings`; no subas `appsettings.Development.json` si contiene el servidor de tu equipo o credenciales.
 
 ## Ejecutar el proyecto
 
