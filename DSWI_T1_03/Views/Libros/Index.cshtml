@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DSWI_T1_03.Models.Libro>
+
+@{
+    ViewData["Title"] = "Listado de Libros";
+    Dictionary<int, string?> autores = ViewBag.Autores;
+}
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Listado de Libros</h2>
+
+        <a asp-action="Create" class="btn btn-primary">
+            Nuevo Libro
+        </a>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Año de publicación</th>
+                <th>ISBN</th>
+                <th>Autor ID</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var libro in Model)
+            {
+                <tr>
+                    <td>@libro.LibroId</td>
+                    <td>@libro.Titulo</td>
+                    <td>@libro.Genero</td>
+                    <td>@libro.AñoPublicacion</td>
+                    <td>@libro.Isbn</td>
+                    <td>
+                        @if (libro.AutorId.HasValue &&
+                             autores.TryGetValue(libro.AutorId.Value, out var nombreAutor))
+                        {
+                            @nombreAutor
+                        }
+                        else
+                        {
+                            <span>Sin autor</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@libro.LibroId"
+                           class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
