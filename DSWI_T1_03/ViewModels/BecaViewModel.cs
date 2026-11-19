@@ -1,4 +1,4 @@
-﻿namespace DSWI_T1_01.ViewModels
+﻿namespace DSWI_T1_03.ViewModels
 {
     public class BecaViewModel
     {

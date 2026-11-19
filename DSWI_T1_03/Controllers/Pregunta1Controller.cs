@@ -1,7 +1,7 @@
-﻿using DSWI_T1_01.ViewModels;
+﻿using DSWI_T1_03.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DSWI_T1_01.Controllers
+namespace DSWI_T1_03.Controllers
 {
     public class Pregunta1Controller : Controller
     {

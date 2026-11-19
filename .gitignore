@@ -5,6 +5,7 @@
 
 # dotenv files
 .env
+/DSWI_T1_03/appsettings.Development.json
 
 # User-specific files
 *.rsuser

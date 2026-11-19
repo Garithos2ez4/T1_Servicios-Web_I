@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DSWI_T1_01.Models;
+namespace DSWI_T1_03.Models;
 
 public partial class Autore
 {

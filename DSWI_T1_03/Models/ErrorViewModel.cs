@@ -1,4 +1,4 @@
-namespace DSWI_T1_01.Models
+namespace DSWI_T1_03.Models
 {
     public class ErrorViewModel
     {

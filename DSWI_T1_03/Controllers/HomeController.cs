@@ -1,8 +1,8 @@
-using DSWI_T1_01.Models;
+using DSWI_T1_03.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace DSWI_T1_01.Controllers
+namespace DSWI_T1_03.Controllers
 {
     public class HomeController : Controller
     {
