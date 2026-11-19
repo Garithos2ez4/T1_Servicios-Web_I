@@ -1,0 +1,27 @@
+﻿@model DSWI_T1_01.ViewModels.UtilidadViewModel
+@{
+    ViewData["Title"] = "Cálculo de Utilidades";
+}
+
+<div class="container mt-4" style="max-width: 550px;">
+    <h3>Cálculo de Utilidades</h3>
+    <form asp-action="Utilidades" method="post" class="card p-4 shadow-sm">
+        <div class="mb-3">
+            <label class="form-label">Salario Mensual (S/):</label>
+            <input asp-for="Salario" type="number" step="0.01" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Años trabajando en la institución:</label>
+            <input asp-for="AniosTrabajando" type="number" step="0.1" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Calcular Utilidad</button>
+    </form>
+
+    @if (Model.Calculado)
+    {
+        <div class="alert alert-success mt-3">
+            <p class="mb-1"><strong>Porcentaje de Utilidad:</strong> @Model.PorcentajeAplicado%</p>
+            <p class="mb-0"><strong>Monto a recibir:</strong> S/ @Model.MontoUtilidad.ToString("N2")</p>
+        </div>
+    }
+</div>
